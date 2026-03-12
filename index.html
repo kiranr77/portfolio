@@ -312,6 +312,11 @@ h1,h2,h3{
   font-weight:bold;
 }
 
+#resume .buttons {
+  display: flex;
+  justify-content: center;
+}
+
 /* ---------- GRIDS ---------- */
 .grid{
   display:grid;
@@ -875,13 +880,8 @@ footer{
   <h2>Resume</h2>
   <p>Download or view my detailed resume to know about my qualifications .</p>
 
-  <div style="margin: 30px 0; text-align: center;">
-    <button onclick="openResume()" class="primary" style="display: inline-block; padding: 12px 30px; background: #00bfff; color: #000; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 16px; margin-right: 10px; cursor: pointer;">
-      <i class="fas fa-eye" style="margin-right: 8px;"></i>View Resume
-    </button>
-    <a href="https://docs.google.com/document/d/1NCdX2iT9EY4EVucZ8UKLDxYe0HnV08aKnSWGPhsQCk8/edit?usp=drivesdk" target="_blank" class="primary" style="display: inline-block; padding: 12px 30px; background: #00bfff; color: #000; border: none; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 16px;">
-      <i class="fas fa-download" style="margin-right: 8px;"></i>Download Resume
-    </a>
+  <div class="buttons" style="margin: 30px 0; display: flex; justify-content: center;">
+    <a href="#" onclick="openResume(); return false;" class="primary">View Resume</a>
   </div>
 
   <div style="margin-top: 30px; padding: 20px; background: #111; border-left: 3px solid #00bfff; border-radius: 4px;">
@@ -1074,11 +1074,7 @@ footer{
 })();
 
 function openResume() {
-  var modal = document.getElementById("resumeModal");
-  var iframe = modal.querySelector("iframe");
-  // Open the Google Doc directly
-  iframe.src = "https://docs.google.com/document/d/1NCdX2iT9EY4EVucZ8UKLDxYe0HnV08aKnSWGPhsQCk8/preview";
-  modal.style.display = "block";
+  window.open("https://drive.google.com/file/d/1_l4MugRGeHEGESLevWwut-VoYq8bbtoY/view?usp=sharing", "_blank");
 }
 function closeResume() {
   var modal = document.getElementById("resumeModal");
