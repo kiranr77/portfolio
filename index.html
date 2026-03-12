@@ -143,14 +143,12 @@ body::before {
   object-fit:cover;
   display:block;
   margin:0 auto 15px;
-  border: 3px solid #00bfff;
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
-  transition: all 0.4s ease;
-}
-
-.profile-pic:hover {
-  transform: rotateY(10deg) rotateZ(5deg);
-  box-shadow: 0 0 30px rgba(0, 191, 255, 0.8);
+  border: 3px solid #010607;
+  box-shadow: 0 0 20px rgba(6, 6, 6, 0.5);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 .profile-name{
@@ -179,6 +177,7 @@ body::before {
   color:#d7c2d4;
   margin:0 8px;
   font-size:18px;
+  text-decoration:none;
 }
 
 /* ---------- MAIN CONTENT ---------- */
@@ -195,6 +194,10 @@ nav{
   border-bottom:1px solid #333;
   display:flex;
   justify-content:space-between;
+  position: sticky;
+  top: 0;
+  z-index: 500;
+  background:#000;
 }
 
 nav a{
@@ -280,6 +283,7 @@ h1,h2,h3{
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   position: relative;
   overflow: hidden;
+  text-decoration:none;
 }
 
 .buttons a::before {
@@ -325,6 +329,32 @@ h1,h2,h3{
   overflow: hidden;
 }
 
+.project-github-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:12px;
+  padding:6px 14px;
+  border-radius:6px;
+  border:1px solid #00bfff;
+  background:transparent;
+  color:#00bfff;
+  font-size:13px;
+  text-decoration:none;
+  cursor:pointer;
+  transition:background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.project-github-btn i{
+  font-size:16px;
+}
+
+.project-github-btn:hover{
+  background:#00bfff;
+  color:#000;
+  transform:translateY(-2px);
+}
+
 .card::before {
   content: '';
   position: absolute;
@@ -352,6 +382,44 @@ h1,h2,h3{
   border-color: #00bfff;
   transform: translateY(-10px) rotateX(5deg) rotateZ(2deg);
   box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3), 0 0 60px rgba(123, 58, 237, 0.2);
+}
+
+/* Projects, Certifications, Contact: boxes should not move on hover */
+#projects .card:hover,
+#certifications .card:hover,
+#contact .card:hover,
+#contact .contact-form button:hover {
+  transform: none;
+  box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+}
+
+#contact .contact-form button:hover {
+  box-shadow: 0 10px 25px rgba(123, 58, 237, 0.4);
+}
+
+#contact .contact-form button:hover {
+  transform: none;
+}
+
+#contact .contact-form button:hover {
+  transform: none;
+}
+
+/* Contact form button: should not move on hover */
+#contact .contact-form button:hover {
+  transform: none;
+}
+
+#contact .contact-form button:hover {
+  transform: none;
+}
+
+#contact .contact-form button:hover {
+  transform: none;
+}
+
+#contact .contact-form button:hover {
+  transform: none;
 }
 
 footer{
@@ -396,6 +464,12 @@ footer{
   border-color:#00bfff;
   transform:translateY(-8px) rotateY(-10deg) rotateX(10deg);
   box-shadow: 0 15px 35px rgba(0, 191, 255, 0.3);
+}
+
+/* Skills section: boxes should not move on hover */
+#skills .skill-card:hover {
+  transform: none;
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
 }
 
 .skill-card:hover::before {
@@ -552,12 +626,22 @@ footer{
   box-shadow: 0 10px 25px rgba(123, 58, 237, 0.4);
 }
 
+/* Contact section: form button should not move on hover */
+#contact .contact-form button:hover {
+  transform: none;
+}
+
 .contact-form button:hover::before {
   transform: translateX(100%);
 }
 
 .contact-form button:active {
   transform: translateY(0);
+}
+
+/* Contact section: form button should not move on hover */
+#contact .contact-form button:hover {
+  transform: none;
 }
 
 /* ================================
@@ -693,7 +777,7 @@ footer{
 
 <!-- SIDEBAR -->
 <div class="profile-sidebar">
-  <img src="https://raw.githubusercontent.com/kiranr77/profileimg/a80ea569192a1d923470dec69caf229ce8040e8c/llll.png" class="profile-pic" alt="Profile Picture">
+  <img src="https://raw.githubusercontent.com/kiranr77/portfolio/6521c9ae3a7c072cc3b6a729185e6829cfdccfc0/photo.png" class="profile-pic" alt="Profile Picture" draggable="false" oncontextmenu="return false;">
 
   <div class="profile-name">D.Kiran Kumar Reddy</div>
   <div class="profile-role">Web Developer</div>
@@ -702,14 +786,26 @@ footer{
     <p><strong>Email:</strong> dhumbalakirankumarreddy@gmail.com</p>
     <p><strong>Phone:</strong> 9490723267</p>
     <p><strong>Birthday:</strong> 19/02/2005</p>
-    <p><strong>Age:</strong> 20</p>
+    <p><strong>Age:</strong> <span id="age"></span></p>
   </div>
 
   <div class="social-icons">
-    <a href="https://www.facebook.com/share/17V4oY2SbY/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://x.com/Kiranreddy_7" target="_blank"><i class="fab fa-twitter"></i></a>
-    <a href="https://www.instagram.com/_mr_reddy_7" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.linkedin.com/in/kiran-reddy-218a18355" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/kiran-949o72/" target="blank">
+      <i class="fab fa-linkedin-in"></i>
+    </a>
+    <!-- GitHub -->
+    <a href="https://github.com/kiranr77" target="blank">
+      <i class="fab fa-github"></i>
+    </a>
+    <!-- X (formerly Twitter) -->
+    <a href="https://x.com/Kiranreddy_7" target="blank">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/_mr_reddy_7" target="blank">
+      <i class="fab fa-instagram"></i>
+    </a>
   </div>
 </div>
 
@@ -745,18 +841,18 @@ footer{
 <section id="about">
   <h2>About Me</h2>
   <p>
-    I am <strong>Dumbala Kiran Kumar Reddy</strong>, pursuing
-    <strong>B.Tech in Information Technology</strong> (3rd Year, 1st Semester)
-    at <strong>Vignan Institute of Technology and Science</strong>.
+    Hi, I’m D Kiran Kumar Reddy, a Information Technology student passionate about Full-Stack Development.I build web applications using HTML&CSS,JavaScript,React, Node.js, and SQL and enjoy solving real-world problems with technology.
   </p>
-
+</section>
+  <section id="Education">
   <h3>Education</h3>
   <ul>
     <li>SSC – Ekashila School, Warangal (GPA 9.7)</li>
     <li>Intermediate – Narayana College, Hyderabad (80%)</li>
-    <li>B.Tech IT – ITS (CGPA 6.8)</li>
+    <li>B.Tech IT – Vignan Institute of Technology and Science - Pursuing </li>
   </ul>
-
+</section>
+<section id="Interests">
  <h3>Interests</h3>
   <ul>
     <li>Coding & Web Development</li>
@@ -764,7 +860,8 @@ footer{
     <li>AI & Machine Learning</li>
     <li>Gaming</li>
   </ul>
-
+</section>
+<section id="Career Goals">
  <h3>Career Goals</h3>
   <ul>
     <li>Become a skilled software developer</li>
@@ -804,28 +901,32 @@ footer{
 <section id="projects">
   <h2>Projects</h2>
   <div class="grid">
-    <div class="card">
-      <h3>Fake News Detection</h3>
-      <p>ML system to classify fake and real news articles.</p>
-      <p><strong>Tech:</strong> Python, Machine Learning</p>
-    </div>
-
+  
     <div class="card">
       <h3>CertifyHub</h3>
       <p>Personal certification management platform.</p>
-      <p><strong>Tech:</strong> HTML, CSS, React, Node.js, MySQL</p>
+      <p><strong>Tech:</strong> HTML, CSS, JavaScript,</p>
+      <a href="https://kiranr77.github.io/Certification-Hub/
+      " target="_blank" class="project-github-btn">
+        <span>View Website</span>
+      </a>
     </div>
 
     <div class="card">
-      <h3>Circular Economy Marketplace</h3>
-      <p>Platform for selling, exchanging & repairing products.</p>
-      <p><strong>Tech:</strong> React, Tailwind CSS</p>
+      <h3>Personal Portfolio</h3>
+      <p>Personal Portfolio website.</p>
+      <p><strong>Tech:</strong> HTML&CSS</p>
+      <a href="https://kiranr77.github.io/portfolio/
+      " target="blank" class="project-github-btn">
+        <span>View Website</span>
+      </a>
     </div>
+  
   </div>
 </section>
 
 <!-- SKILLS -->
-<section>
+<section id="skills">
   <h2>Skills</h2>
   <div class="skills-row">
     <div class="skill-card">
@@ -911,7 +1012,7 @@ footer{
       
       <div class="card" style="border-left: 3px solid #00bfff; background: #111;">
         <h3 style="color: #00bfff; margin-bottom: 15px;"><i class="fab fa-linkedin" style="margin-right: 10px;"></i>LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/kiran-reddy-218a18355" target="_blank" style="color: #00bfff; text-decoration: none;">Mr Kiran Reddy</a></p>
+        <p><a href="https://www.linkedin.com/in/kiran-949o72/" target="_blank" style="color: #00bfff; text-decoration: none;">Mr Kiran Reddy</a></p>
       </div>
     </div>
 
@@ -960,6 +1061,18 @@ footer{
   </div>
 </div>
 <script>
+// Calculate age from birthday (19/02/2005 = Feb 19, 2005)
+(function() {
+  var birthDate = new Date(2005, 1, 19); // Month is 0-indexed (Feb = 1)
+  var today = new Date();
+  var age = today.getFullYear() - birthDate.getFullYear();
+  if (today < new Date(today.getFullYear(), birthDate.getMonth(), birthDate.getDate())) {
+    age--;
+  }
+  var el = document.getElementById("age");
+  if (el) el.textContent = age;
+})();
+
 function openResume() {
   var modal = document.getElementById("resumeModal");
   var iframe = modal.querySelector("iframe");
