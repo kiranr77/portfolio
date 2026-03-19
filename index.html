@@ -10,6 +10,76 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
+:root {
+  --bg-primary: #000;
+  --bg-secondary: #111;
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+  --text-muted: #aaa;
+  --border-color: #333;
+  --accent-color: #00bfff;
+  --accent-secondary: #7c3aed;
+  --card-bg: #111;
+}
+
+body.light-mode {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --text-muted: #777;
+  --border-color: #ddd;
+  --accent-color: #0066cc;
+  --accent-secondary: #7c3aed;
+  --card-bg: #ffffff;
+}
+
+body.light-mode .contact-form {
+  background: linear-gradient(135deg, #e8e8f0 0%, #f0f0fa 100%) !important;
+}
+
+body.light-mode .contact-form h3 {
+  color: #333;
+}
+
+body.light-mode .form-group label {
+  color: #555;
+}
+
+body.light-mode .primary {
+  background: #ffffff;
+  color: #0066cc;
+  border-color: #0066cc;
+}
+
+body.light-mode .primary:hover {
+  background: #0066cc;
+  color: #ffffff;
+  box-shadow: 0 0 15px #0066cc;
+}
+
+body.light-mode .project-github-btn {
+  color: #0066cc;
+  border-color: #0066cc;
+}
+
+body.light-mode .project-github-btn:hover {
+  background: #0066cc;
+  color: #ffffff;
+  box-shadow: 0 8px 20px #0066cc;
+}
+
+body.light-mode #certifications .card a {
+  color: #0066cc;
+  border-color: #0066cc;
+}
+
+body.light-mode #certifications .card a:hover {
+  background: #0066cc;
+  color: #ffffff;
+  box-shadow: 0 6px 15px #0066cc;
+}
+
 *{
   margin:0;
   padding:0;
@@ -18,12 +88,13 @@
 }
 
 body{
-  background: #000;
-  color:#fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 100vh;
   perspective: 1200px;
   position: relative;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Animated Background Elements */
@@ -72,10 +143,10 @@ body::before {
 }
 
 .modal-content {
-  background-color: #111;
+  background-color: var(--card-bg);
   margin: 0;
   padding: 20px;
-  border: 1px solid #00bfff;
+  border: 1px solid var(--accent-color);
   width: 90%;
   height: 90%;
   margin-left: 5%;
@@ -90,17 +161,17 @@ body::before {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
   padding-bottom: 10px;
 }
 
 .modal-header h2 {
-  color: #00bfff;
+  color: var(--accent-color);
   margin: 0;
 }
 
 .close-btn {
-  color: #00bfff;
+  color: var(--accent-color);
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
@@ -109,7 +180,7 @@ body::before {
 }
 
 .close-btn:hover {
-  color: #fff;
+  color: var(--accent-secondary);
 }
 
 .modal-body {
@@ -126,9 +197,9 @@ body::before {
 /* ---------- SIDEBAR ---------- */
 .profile-sidebar{
   width:300px;
-  background:#111;
+  background: var(--bg-secondary);
   padding:30px;
-  border-right:1px solid #333;
+  border-right:1px solid var(--border-color);
   position:fixed;
   height:100vh;
   overflow:hidden;
@@ -159,7 +230,7 @@ body::before {
 
 .profile-role{
   text-align:center;
-  color:#aaa;
+  color: var(--text-muted);
   margin-bottom:20px;
 }
 
@@ -174,7 +245,7 @@ body::before {
 }
 
 .social-icons a{
-  color:#d7c2d4;
+  color: var(--accent-color);
   margin:0 8px;
   font-size:18px;
   text-decoration:none;
@@ -191,18 +262,24 @@ body::before {
 /* ---------- NAV ---------- */
 nav{
   padding:20px 40px;
-  border-bottom:1px solid #333;
+  border-bottom:1px solid var(--border-color);
   display:flex;
   justify-content:space-between;
+  align-items:center;
   position: sticky;
   top: 0;
   z-index: 500;
-  background:#000;
+  background: var(--bg-primary);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 nav a{
-  margin-left:20px;
-  color:#00bfff;
+  color: var(--accent-color);
   text-decoration:none;
   transition: all 0.3s ease;
   position: relative;
@@ -216,12 +293,12 @@ nav a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #00bfff, #7c3aed);
+  background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
   transition: width 0.4s cubic-bezier(0.23, 1, 0.320, 1);
 }
 
 nav a:hover {
-  color: #7c3aed;
+  color: var(--accent-secondary);
   text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
 }
 
@@ -229,10 +306,26 @@ nav a:hover::after {
   width: 100%;
 }
 
+#themeToggle {
+  background: var(--accent-color);
+  color: var(--bg-primary);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+#themeToggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px var(--accent-color);
+}
+
 /* ---------- SECTIONS ---------- */
 section{
   padding:50px 40px;
-  border-bottom:1px solid #333;
+  border-bottom:1px solid var(--border-color);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -269,21 +362,29 @@ h1,h2,h3{
 }
 
 .home p{
-  color:#ccc;
+  color: var(--text-secondary);
   max-width:600px;
   margin:0 auto 20px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .buttons a{
   display:inline-block;
   padding:10px 25px;
-  border:1px solid #fff;
+  border:1px solid var(--text-primary);
   margin:5px;
   border-radius:5px;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   position: relative;
   overflow: hidden;
   text-decoration:none;
+  color: var(--text-primary);
 }
 
 .buttons a::before {
@@ -299,7 +400,9 @@ h1,h2,h3{
 
 .buttons a:hover {
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 10px 25px var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .buttons a:hover::before {
@@ -307,9 +410,17 @@ h1,h2,h3{
 }
 
 .primary{
-  background:#100f0f;
-  color:#f8f1f1;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   font-weight:bold;
+  border: 2px solid var(--text-primary);
+}
+
+.primary:hover {
+  background: transparent;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
 }
 
 #resume .buttons {
@@ -325,29 +436,56 @@ h1,h2,h3{
 }
 
 .card{
-  border:1px solid #333;
-  padding:20px;
+  border:1px solid var(--border-color);
   border-radius:8px;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   transform: translateZ(0);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-bg);
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-content {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content .project-github-btn {
+  align-self: center;
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
 }
 
 .project-github-btn{
   display:inline-flex;
   align-items:center;
+  justify-content:center;
   gap:6px;
   margin-top:12px;
-  padding:6px 14px;
+  padding:10px 20px;
   border-radius:6px;
-  border:1px solid #00bfff;
-  background:transparent;
-  color:#00bfff;
+  border: 2px solid var(--accent-color);
+  background: transparent;
+  color: var(--accent-color);
   font-size:13px;
   text-decoration:none;
   cursor:pointer;
-  transition:background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 .project-github-btn i{
@@ -355,9 +493,10 @@ h1,h2,h3{
 }
 
 .project-github-btn:hover{
-  background:#00bfff;
-  color:#000;
-  transform:translateY(-2px);
+  background: var(--accent-color);
+  color: var(--bg-secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--accent-color);
 }
 
 .card::before {
@@ -383,10 +522,42 @@ h1,h2,h3{
 }
 
 .card:hover {
-  background:#111;
-  border-color: #00bfff;
+  background: var(--card-bg);
+  border-color: var(--accent-color);
   transform: translateY(-10px) rotateX(5deg) rotateZ(2deg);
   box-shadow: 0 20px 40px rgba(0, 191, 255, 0.3), 0 0 60px rgba(123, 58, 237, 0.2);
+}
+
+/* Projects section styling */
+#projects .card {
+  padding: 20px;
+}
+
+/* Certifications section styling */
+#certifications .card {
+  padding: 20px;
+}
+
+#certifications .card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--accent-color);
+  text-decoration: none;
+  border-radius: 6px;
+  border: 2px solid var(--accent-color);
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#certifications .card a:hover {
+  background: var(--accent-color);
+  color: var(--bg-secondary);
+  box-shadow: 0 6px 15px var(--accent-color);
+  transform: translateY(-2px);
 }
 
 /* Projects, Certifications, Contact: boxes should not move on hover */
@@ -395,42 +566,20 @@ h1,h2,h3{
 #contact .card:hover,
 #contact .contact-form button:hover {
   transform: none;
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
-}
-
-#contact .contact-form button:hover {
-  box-shadow: 0 10px 25px rgba(123, 58, 237, 0.4);
-}
-
-#contact .contact-form button:hover {
-  transform: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 20px var(--accent-color);
+  opacity: 0.9;
 }
 
 #contact .contact-form button:hover {
   transform: none;
-}
-
-/* Contact form button: should not move on hover */
-#contact .contact-form button:hover {
-  transform: none;
-}
-
-#contact .contact-form button:hover {
-  transform: none;
-}
-
-#contact .contact-form button:hover {
-  transform: none;
-}
-
-#contact .contact-form button:hover {
-  transform: none;
+  box-shadow: 0 10px 25px var(--accent-color);
 }
 
 footer{
   text-align:center;
   padding:20px;
-  color:#777;
+  color: var(--text-muted);
 }
 
 /* ---------- SKILLS ---------- */
@@ -444,12 +593,13 @@ footer{
 .skill-card{
   text-align:center;
   padding:20px;
-  border:1px solid #333;
+  border:1px solid var(--border-color);
   border-radius:8px;
   transition:all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
+  background: var(--card-bg);
 }
 
 .skill-card::before {
@@ -465,8 +615,8 @@ footer{
 }
 
 .skill-card:hover{
-  background:#111;
-  border-color:#00bfff;
+  background: var(--card-bg);
+  border-color: var(--accent-color);
   transform:translateY(-8px) rotateY(-10deg) rotateX(10deg);
   box-shadow: 0 15px 35px rgba(0, 191, 255, 0.3);
 }
@@ -474,7 +624,8 @@ footer{
 /* Skills section: boxes should not move on hover */
 #skills .skill-card:hover {
   transform: none;
-  box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px var(--accent-color);
 }
 
 .skill-card:hover::before {
@@ -501,8 +652,8 @@ footer{
 .resume-item{
   margin:20px 0;
   padding:15px;
-  border-left:3px solid #00bfff;
-  background:#111;
+  border-left:3px solid var(--accent-color);
+  background: var(--card-bg);
   border-radius:4px;
 }
 
@@ -519,12 +670,12 @@ footer{
 }
 
 .date{
-  color:#aaa;
+  color: var(--text-muted);
   font-size:14px;
 }
 
 .company{
-  color:#00bfff;
+  color: var(--accent-color);
   margin:5px 0 10px 0;
   font-size:14px;
 }
@@ -538,23 +689,77 @@ footer{
 
 .skill-group{
   padding:15px;
-  background:#111;
+  background: var(--card-bg);
   border-radius:4px;
-  border-left:3px solid #00bfff;
+  border-left:3px solid var(--accent-color);
+}
+
+/* ---------- CONTACT SECTION ---------- */
+#contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 30px;
+  align-items: start;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-card {
+  border-left: 3px solid var(--accent-color);
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover {
+  border-left-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 191, 255, 0.2);
+  transform: translateX(5px);
+}
+
+.contact-card h3 {
+  color: var(--accent-color);
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-card p {
+  margin: 0;
+  color: var(--accent-color);
+  font-size: 14px;
+}
+
+.contact-card a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-card a:hover {
+  opacity: 0.8;
+  text-shadow: 0 0 10px rgba(0, 191, 255, 0.5);
 }
 
 /* ---------- CONTACT FORM ---------- */
 .contact-form {
-  max-width: 400px;
-  margin: 0;
-  padding: 20px;
-  background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+  padding: 30px;
+  background: linear-gradient(135deg, #2d2d44 0%, #3d3d54 100%);
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 191, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
 }
 
 .contact-form h3 {
-  color: #fff;
+  color: var(--text-primary);
   margin-bottom: 18px;
   font-size: 18px;
   text-align: center;
@@ -566,30 +771,30 @@ footer{
 
 .form-group label {
   display: block;
-  color: #ccc;
+  color: #fff;
   font-weight: 500;
-  margin-bottom: 5px;
-  font-size: 13px;
+  margin-bottom: 8px;
+  font-size: 14px;
 }
 
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 8px 12px;
-  background: #fff;
-  border: 2px solid #ddd;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: none;
   border-radius: 6px;
   font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   color: #333;
-  transition: border-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #00bfff;
-  box-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+  background: #ffffff;
 }
 
 .form-group textarea {
@@ -599,54 +804,26 @@ footer{
 
 .contact-form button {
   width: 100%;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   color: #fff;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
-  transform-style: preserve-3d;
-}
-
-.contact-form button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease;
 }
 
 .contact-form button:hover {
-  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(123, 58, 237, 0.4);
-}
-
-/* Contact section: form button should not move on hover */
-#contact .contact-form button:hover {
-  transform: none;
-}
-
-.contact-form button:hover::before {
-  transform: translateX(100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
 }
 
 .contact-form button:active {
   transform: translateY(0);
-}
-
-/* Contact section: form button should not move on hover */
-#contact .contact-form button:hover {
-  transform: none;
 }
 
 /* ================================
@@ -704,6 +881,10 @@ footer{
 
   .home {
     padding-top: 40px;
+  }
+
+  #contact-container {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -819,12 +1000,13 @@ footer{
 
 <nav>
   <h2>Portfolio</h2>
-  <div>
+  <div class="nav-links">
     <a href="#about">About</a>
     <a href="#resume">Resume</a>
     <a href="#projects">Projects</a>
     <a href="#certifications">Certifications</a>
     <a href="#contact">Contact</a>
+    <button id="themeToggle" onclick="toggleTheme()">🌙 Dark</button>
   </div>
 </nav>
 
@@ -884,15 +1066,15 @@ footer{
     <a href="#" onclick="openResume(); return false;" class="primary">View Resume</a>
   </div>
 
-  <div style="margin-top: 30px; padding: 20px; background: #111; border-left: 3px solid #00bfff; border-radius: 4px;">
-    <h3>What's in My Resume</h3>
+  <div style="margin-top: 30px; padding: 20px; background: var(--card-bg); border-left: 3px solid var(--accent-color); border-radius: 4px;">
+    <h3 style="color: var(--accent-color);">What's in My Resume</h3>
     <ul>
-      <li><strong>Contact Information</strong> - Email, phone, and professional profiles</li>
-      <li><strong>Professional Summary</strong> - Overview of my skills and experience</li>
-      <li><strong>Technical Skills</strong> - Programming languages, frameworks, and tools</li>
-      <li><strong>Project Experience</strong> - Full-stack projects and achievements</li>
-      <li><strong>Education</strong> - B.Tech IT and academic credentials</li>
-      <li><strong>Certifications & Achievements</strong> - Recognition and accomplishments</li>
+      <li><strong style="color: var(--text-secondary);">Contact Information</strong> - <span style="color: var(--text-muted);">Email, phone, and professional profiles</span></li>
+      <li><strong style="color: var(--text-secondary);">Professional Summary</strong> - <span style="color: var(--text-muted);">Overview of my skills and experience</span></li>
+      <li><strong style="color: var(--text-secondary);">Technical Skills</strong> - <span style="color: var(--text-muted);">Programming languages, frameworks, and tools</span></li>
+      <li><strong style="color: var(--text-secondary);">Project Experience</strong> - <span style="color: var(--text-muted);">Full-stack projects and achievements</span></li>
+      <li><strong style="color: var(--text-secondary);">Education</strong> - <span style="color: var(--text-muted);">B.Tech IT and academic credentials</span></li>
+      <li><strong style="color: var(--text-secondary);">Certifications & Achievements</strong> - <span style="color: var(--text-muted);">Recognition and accomplishments</span></li>
     </ul>
   </div>
 </section>
@@ -903,23 +1085,41 @@ footer{
   <div class="grid">
   
     <div class="card">
-      <h3>CertifyHub</h3>
-      <p>Personal certification management platform.</p>
-      <p><strong>Tech:</strong> HTML, CSS, JavaScript,</p>
-      <a href="https://kiranr77.github.io/Certification-Hub/
-      " target="_blank" class="project-github-btn">
-        <span>View Website</span>
-      </a>
+      <img src="images/project.png" alt="CertifyHub Demo" />
+      <div class="card-content">
+        <h3>CertifyHub</h3>
+        <p>Personal certification management platform.</p>
+        <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+        <p><strong>Details:</strong>Certification Hub is a personal certification management website where you can save your certifications.</p>
+        <a href="https://kiranr77.github.io/Certification-Hub/" target="_blank" class="project-github-btn">
+          <span>View Website</span>
+        </a>
+      </div>
     </div>
 
     <div class="card">
-      <h3>Personal Portfolio</h3>
-      <p>Personal Portfolio website.</p>
-      <p><strong>Tech:</strong> HTML&CSS</p>
-      <a href="https://kiranr77.github.io/portfolio/
-      " target="blank" class="project-github-btn">
-        <span>View Website</span>
-      </a>
+      <img src="images/project 4.png" alt="Sensor-Based Street Lighting System Demo" />
+      <div class="card-content">
+        <h3>Sensor-Based Street Lighting System</h3>
+        <p>Automated street lighting system using sensors.</p>
+        <p><strong>Components:</strong> LDR Sensor,IR Sensor/PIR Motion SensorBreadboard,Jumper wires,Power supply,LEDs</p>
+        <p><strong>Details:</strong>A Physics project. An Sensor-Based Street Lighting System automatically adjusts street light brightness using sensors to save energy and improve safety.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="images/project2.png" alt="Personal Portfolio Demo" />
+      <div class="card-content">
+        <h3>Personal Portfolio</h3>
+        <p>Personal Portfolio website.</p>
+        <div>
+          <p><strong>Tech:</strong> HTML&CSS</p>
+        </div>
+        <p><strong>Details:</strong>personal website built to showcase-Skills,Projects,Contact details. </p>
+        <a href="https://kiranr77.github.io/portfolio/" target="_blank" class="project-github-btn">
+          <span>View Website</span>
+        </a>
+      </div>
     </div>
   
   </div>
@@ -966,30 +1166,30 @@ footer{
   <div class="grid">
     <div class="card">
       <h3>Certification in Introduction to Data Science</h3>
-      <p><strong>Issuer:</strong> Cisco </p>
+      <p><strong>Issuer:</strong> Cisco</p>
       <p><strong>Date:</strong> 03 Jul 2025</p>
-      <a href="https://drive.google.com/file/d/1iLwHP91wZU1Hqr6fwRaZdTMqPHVfdSTE/view?usp=drivesdk" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #00bfff; color: #000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 12px;">View Certificate</a>
+      <a href="https://drive.google.com/file/d/1iLwHP91wZU1Hqr6fwRaZdTMqPHVfdSTE/view?usp=drivesdk" target="_blank">View Certificate</a>
     </div>
 
     <div class="card">
       <h3>Certification in Communication and Personality Dynamics</h3>
       <p><strong>Issuer:</strong> IBM SkillsBuild</p>
-      <p><strong>Date:</strong>25 Sep 2025</p>
-      <a href="https://drive.google.com/file/d/15kH3VGqRsNDqxCIXUhr5kf3mR7dgn9DG/view?usp=drivesdk" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #00bfff; color: #000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 12px;">View Certificate</a>
+      <p><strong>Date:</strong> 25 Sep 2025</p>
+      <a href="https://drive.google.com/file/d/15kH3VGqRsNDqxCIXUhr5kf3mR7dgn9DG/view?usp=drivesdk" target="_blank">View Certificate</a>
     </div>
 
     <div class="card">
       <h3>Certification in Artificial Intelligence Fundamentals</h3>
       <p><strong>Issuer:</strong> IBM SkillsBuild</p>
       <p><strong>Date:</strong> 25 Sep 2025</p>
-      <a href="https://drive.google.com/file/d/107duc0zIsJEbHiR34SLEowtreWcNvkRm/view?usp=drivesdk" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #00bfff; color: #000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 12px;">View Certificate</a>
+      <a href="https://drive.google.com/file/d/107duc0zIsJEbHiR34SLEowtreWcNvkRm/view?usp=drivesdk" target="_blank">View Certificate</a>
     </div>
 
     <div class="card">
       <h3>Certification in Frontend with HTML5 & CSS3</h3>
-      <p><strong>Issuer:</strong> TASK </p>
-      <p><strong>Date:</strong>30/10/2024.</p>
-      <a href="https://drive.google.com/file/d/1QJrw61HN2X6-nZH4yZ6oWyQCNSAZewoq/view?usp=drivesdk" target="_blank" style="display: inline-block; margin-top: 10px; padding: 8px 16px; background: #00bfff; color: #000; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 12px;">View Certificate</a>
+      <p><strong>Issuer:</strong> TASK</p>
+      <p><strong>Date:</strong> 30/10/2024</p>
+      <a href="https://drive.google.com/file/d/1QJrw61HN2X6-nZH4yZ6oWyQCNSAZewoq/view?usp=drivesdk" target="_blank">View Certificate</a>
     </div>
   </div>
 </section>
@@ -997,27 +1197,27 @@ footer{
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact</h2>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px; align-items: start;">
+  <div id="contact-container">
     <!-- Left Side - Contact Info -->
-    <div>
-      <div class="card" style="border-left: 3px solid #00bfff; background: #111; margin-bottom: 20px;">
-        <h3 style="color: #00bfff; margin-bottom: 15px;"><i class="fas fa-envelope" style="margin-right: 10px;"></i>Email</h3>
-        <p><a href="mailto:dhumbalakirankumarreddy@gmail.com" style="color: #00bfff; text-decoration: none;">dhumbalakirankumarreddy@gmail.com</a></p>
+    <div class="contact-info">
+      <div class="contact-card">
+        <h3><i class="fas fa-envelope"></i>Email</h3>
+        <p><a href="mailto:dhumbalakirankumarreddy@gmail.com">dhumbalakirankumarreddy@gmail.com</a></p>
       </div>
       
-      <div class="card" style="border-left: 3px solid #00bfff; background: #111; margin-bottom: 20px;">
-        <h3 style="color: #00bfff; margin-bottom: 15px;"><i class="fas fa-phone" style="margin-right: 10px;"></i>Phone</h3>
-        <p><a href="tel:+919490723267" style="color: #00bfff; text-decoration: none;">+91 9490723267</a></p>
+      <div class="contact-card">
+        <h3><i class="fas fa-phone"></i>Phone</h3>
+        <p><a href="tel:+919490723267">+91 9490723267</a></p>
       </div>
       
-      <div class="card" style="border-left: 3px solid #00bfff; background: #111;">
-        <h3 style="color: #00bfff; margin-bottom: 15px;"><i class="fab fa-linkedin" style="margin-right: 10px;"></i>LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/kiran-949o72/" target="_blank" style="color: #00bfff; text-decoration: none;">Mr Kiran Reddy</a></p>
+      <div class="contact-card">
+        <h3><i class="fab fa-linkedin"></i>LinkedIn</h3>
+        <p><a href="https://www.linkedin.com/in/kiran-949o72/" target="_blank">Mr Kiran Reddy</a></p>
       </div>
     </div>
 
     <!-- Right Side - Contact Form -->
-    <div class="contact-form" style="margin: 0;">
+    <div class="contact-form">
       <h3>Send Me a Message</h3>
       <form id="contactForm" onsubmit="handleContactForm(event)">
         <div class="form-group">
@@ -1061,6 +1261,37 @@ footer{
   </div>
 </div>
 <script>
+// Theme Toggle Function
+function toggleTheme() {
+  const body = document.body;
+  const themeToggle = document.getElementById('themeToggle');
+  
+  if (body.classList.contains('light-mode')) {
+    body.classList.remove('light-mode');
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '🌙 Dark';
+  } else {
+    body.classList.add('light-mode');
+    localStorage.setItem('theme', 'light');
+    themeToggle.textContent = '☀️ Light';
+  }
+}
+
+// Initialize theme on page load
+window.addEventListener('DOMContentLoaded', function() {
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  const body = document.body;
+  const themeToggle = document.getElementById('themeToggle');
+  
+  if (savedTheme === 'light') {
+    body.classList.add('light-mode');
+    themeToggle.textContent = '☀️ Light';
+  } else {
+    body.classList.remove('light-mode');
+    themeToggle.textContent = '🌙 Dark';
+  }
+});
+
 // Calculate age from birthday (19/02/2005 = Feb 19, 2005)
 (function() {
   var birthDate = new Date(2005, 1, 19); // Month is 0-indexed (Feb = 1)
