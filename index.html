@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>D.Kiran Kumar Reddy | Portfolio</title>
+<title>D.Kiran Kumar Reddy </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Font Awesome -->
@@ -651,7 +651,7 @@ background: var(--card-bg);
 .tools-card:hover {
   border-color: var(--accent-color);
   box-shadow: 0 15px 30px rgba(0, 191, 255, 0.2);
-  transform: translateY(-4px);
+  transform: none;
 }
 
 body.light-mode .tools-card {
@@ -872,11 +872,74 @@ transform: translateY(0);
   RESPONSIVE DESIGN
 ================================ */
 
-/* Tablets & small laptops */
-@media (max-width: 1024px) {
+/* Desktop (1440px and above) */
+@media (min-width: 1440px) {
+.container {
+flex-direction: row;
+}
+
 .profile-sidebar {
+position: fixed;
+width: 300px;
+height: 100vh;
+}
+
+.main {
+margin-left: 300px;
+height: 100vh;
+overflow-y: auto;
+}
+
+.grid {
+grid-template-columns: repeat(3, 1fr);
+}
+
+.skills-row {
+grid-template-columns: repeat(4, 1fr);
+}
+
+.tools-row {
+grid-template-columns: repeat(5, 1fr);
+}
+
+#contact-container {
+grid-template-columns: 1fr 1fr;
+}
+}
+
+/* Laptop (1024px - 1439px) */
+@media (min-width: 1024px) and (max-width: 1439px) {
+.container {
+flex-direction: row;
+}
+
+.profile-sidebar {
+position: fixed;
 width: 260px;
+height: 100vh;
 padding: 20px;
+}
+
+.main {
+margin-left: 260px;
+height: 100vh;
+overflow-y: auto;
+}
+
+.grid {
+grid-template-columns: repeat(2, 1fr);
+}
+
+.skills-row {
+grid-template-columns: repeat(3, 1fr);
+}
+
+.tools-row {
+grid-template-columns: repeat(3, 1fr);
+}
+
+#contact-container {
+grid-template-columns: 1fr 1fr;
 }
 
 section {
@@ -888,8 +951,8 @@ padding: 15px 30px;
 }
 }
 
-/* Tablets & large mobiles */
-@media (max-width: 900px) {
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
 .container {
 flex-direction: column;
 }
@@ -899,41 +962,112 @@ width: 100%;
 position: relative;
 height: auto;
 border-right: none;
-border-bottom: 1px solid #333;
+border-bottom: 1px solid var(--border-color);
+padding: 30px 20px;
 text-align: center;
 }
 
 .main {
 margin-left: 0;
+height: auto;
+overflow-y: auto;
 }
 
 .profile-details p {
+display: flex;
 justify-content: center;
+margin-bottom: 8px;
 }
 
 nav {
-flex-direction: column;
+flex-direction: row;
 align-items: center;
+justify-content: center;
 gap: 10px;
+padding: 15px 20px;
+flex-wrap: wrap;
+}
+
+.nav-links {
+flex-direction: row;
+width: auto;
+gap: 10px;
+justify-content: center;
+flex-wrap: wrap;
 }
 
 nav a {
-margin: 0 10px;
+margin: 5px 0;
+display: inline-block;
+padding: 10px;
+font-size: 14px;
+}
+
+#themeToggle {
+display: none;
 }
 
 .home {
 padding-top: 40px;
 }
 
+.grid {
+grid-template-columns: repeat(2, 1fr);
+gap: 20px;
+}
+
+.skills-row {
+grid-template-columns: repeat(3, 1fr);
+gap: 15px;
+}
+
+.tools-row {
+grid-template-columns: repeat(3, 1fr);
+gap: 15px;
+}
+
 #contact-container {
 grid-template-columns: 1fr;
+gap: 30px;
+}
+
+section {
+padding: 35px 25px;
+}
+
+h1 {
+font-size: 28px;
+}
+
+h2 {
+font-size: 22px;
+}
+
+h3 {
+font-size: 18px;
 }
 }
 
-/* Mobile devices */
-@media (max-width: 600px) {
-body {
-font-size: 14px;
+/* Small Tablet / Large Mobile (600px - 767px) */
+@media (max-width: 767px) {
+.container {
+flex-direction: column;
+}
+
+.profile-sidebar {
+width: 100%;
+position: relative;
+height: auto;
+border-right: none;
+border-bottom: 1px solid var(--border-color);
+padding: 25px 20px;
+text-align: center;
+}
+
+.main {
+margin-left: 0;
+height: auto;
+overflow-y: auto;
 }
 
 .profile-pic {
@@ -949,51 +1083,541 @@ font-size: 18px;
 font-size: 14px;
 }
 
+.profile-details p {
+display: flex;
+justify-content: center;
+margin-bottom: 8px;
+font-size: 13px;
+}
+
+nav {
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 8px;
+padding: 12px 15px;
+flex-wrap: wrap;
+}
+
+.nav-links {
+flex-direction: row;
+width: auto;
+gap: 8px;
+justify-content: center;
+flex-wrap: wrap;
+}
+
+nav a {
+margin: 0;
+display: inline-block;
+padding: 6px;
+font-size: 14px;
+}
+
+#themeToggle {
+display: none;
+}
+
+.home {
+padding-top: 30px;
+}
+
 section {
-padding: 30px 20px;
+padding: 25px 15px;
 }
 
 h1 {
-font-size: 24px;
+font-size: 22px;
 }
 
 h2 {
-font-size: 20px;
+font-size: 18px;
 }
 
 h3 {
 font-size: 16px;
 }
 
+.buttons {
+flex-direction: column;
+gap: 8px;
+}
+
 .buttons a {
 display: block;
 width: 100%;
-margin: 8px 0;
+margin: 0;
 text-align: center;
+padding: 10px 15px;
 }
 
 .grid {
 grid-template-columns: 1fr;
+gap: 15px;
 }
 
 .skills-row {
 grid-template-columns: repeat(2, 1fr);
+gap: 12px;
+}
+
+.tools-row {
+grid-template-columns: repeat(2, 1fr);
+gap: 12px;
+}
+
+.skill-card {
+padding: 15px;
+font-size: 12px;
+}
+
+.skill-card i {
+font-size: 28px;
+margin-bottom: 8px;
+}
+
+.tools-card {
+padding: 15px;
+font-size: 12px;
+}
+
+.tools-card i {
+font-size: 28px;
+margin-bottom: 8px;
+}
+
+.tools-card h3 {
+font-size: 14px;
+}
+
+.card img {
+height: 150px;
+}
+
+.resume-item {
+padding: 12px;
+margin: 15px 0;
+}
+
+.resume-item h4 {
+font-size: 14px;
+}
+
+#contact-container {
+grid-template-columns: 1fr;
+gap: 20px;
+}
+
+.contact-form {
+padding: 20px;
+}
+
+.contact-form h3 {
+font-size: 16px;
+margin-bottom: 15px;
+}
+
+.form-group label {
+font-size: 13px;
+}
+
+.form-group input,
+.form-group textarea {
+font-size: 13px;
+padding: 8px 10px;
+}
+
+.form-group textarea {
+min-height: 80px;
+}
+
+.contact-form button {
+font-size: 14px;
+padding: 10px 15px;
 }
 
 footer {
 font-size: 12px;
+padding: 15px;
 }
 }
 
-/* Extra small phones */
-@media (max-width: 400px) {
-.skills-row {
-grid-template-columns: 1fr;
+/* Mobile (400px - 599px) */
+@media (max-width: 599px) {
+.container {
+flex-direction: column;
+}
+
+.profile-sidebar {
+width: 100%;
+position: relative;
+height: auto;
+border-right: none;
+border-bottom: 1px solid var(--border-color);
+padding: 20px 15px;
+text-align: center;
+}
+
+.main {
+margin-left: 0;
+height: auto;
+overflow-y: auto;
+}
+
+.profile-pic {
+width: 85px;
+height: 85px;
+}
+
+.profile-name {
+font-size: 16px;
+margin-bottom: 5px;
+}
+
+.profile-role {
+font-size: 13px;
+margin-bottom: 15px;
+}
+
+.profile-details p {
+display: flex;
+justify-content: center;
+margin-bottom: 6px;
+font-size: 12px;
+}
+
+.profile-details {
+margin-bottom: 15px;
+}
+
+.social-icons {
+margin-top: 15px;
+}
+
+.social-icons a {
+margin: 0 6px;
+font-size: 16px;
+}
+
+nav {
+flex-direction: row;
+align-items: center;
+justify-content: center;
+gap: 6px;
+padding: 10px 12px;
+border-bottom: 1px solid var(--border-color);
+flex-wrap: wrap;
+}
+
+nav h2 {
+display: none;
+}
+
+.nav-links {
+flex-direction: row;
+width: 100%;
+gap: 6px;
+justify-content: center;
+flex-wrap: wrap;
 }
 
 nav a {
+margin: 0;
+display: inline-block;
+padding: 6px 8px;
+font-size: 12px;
+}
+
+#themeToggle {
+display: none;
+}
+
+.home {
+padding-top: 20px;
+padding-bottom: 20px;
+}
+
+.home p {
+font-size: 13px;
+}
+
+section {
+padding: 20px 12px;
+}
+
+h1 {
+font-size: 20px;
+margin-bottom: 10px;
+}
+
+h2 {
+font-size: 16px;
+margin-bottom: 12px;
+}
+
+h3 {
+font-size: 14px;
+}
+
+.buttons {
+flex-direction: column;
+gap: 6px;
+}
+
+.buttons a {
 display: block;
-margin: 5px 0;
+width: 100%;
+margin: 0;
+text-align: center;
+padding: 10px 12px;
+font-size: 13px;
+}
+
+.grid {
+grid-template-columns: 1fr;
+gap: 12px;
+}
+
+.skills-row {
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+
+.tools-row {
+grid-template-columns: repeat(2, 1fr);
+gap: 10px;
+}
+
+.skill-card {
+padding: 12px;
+font-size: 11px;
+border-radius: 6px;
+}
+
+.skill-card i {
+font-size: 24px;
+margin-bottom: 6px;
+}
+
+.skill-card h3 {
+font-size: 12px;
+margin: 8px 0 0 0;
+}
+
+.tools-card {
+padding: 12px;
+font-size: 11px;
+border-radius: 6px;
+}
+
+.tools-card i {
+font-size: 24px;
+margin-bottom: 6px;
+}
+
+.tools-card h3 {
+font-size: 12px;
+}
+
+.card {
+border-radius: 6px;
+}
+
+.card img {
+height: 120px;
+}
+
+.card-content {
+padding: 15px;
+}
+
+.card-content h3 {
+font-size: 14px;
+margin-bottom: 8px;
+}
+
+.card-content p {
+font-size: 12px;
+}
+
+.project-github-btn {
+font-size: 12px;
+padding: 8px 15px;
+}
+
+.resume-item {
+padding: 10px;
+margin: 10px 0;
+border-left-width: 3px;
+}
+
+.resume-item h4 {
+font-size: 13px;
+}
+
+.date {
+font-size: 12px;
+}
+
+.company {
+font-size: 12px;
+}
+
+#contact-container {
+grid-template-columns: 1fr;
+gap: 15px;
+}
+
+.contact-card {
+padding: 15px;
+border-radius: 6px;
+}
+
+.contact-card h3 {
+font-size: 14px;
+margin-bottom: 8px;
+gap: 6px;
+}
+
+.contact-card p {
+font-size: 12px;
+}
+
+.contact-form {
+padding: 15px;
+border-radius: 8px;
+}
+
+.contact-form h3 {
+font-size: 14px;
+margin-bottom: 12px;
+}
+
+.form-group {
+margin-bottom: 12px;
+}
+
+.form-group label {
+font-size: 12px;
+margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea {
+font-size: 12px;
+padding: 8px 10px;
+}
+
+.form-group textarea {
+min-height: 75px;
+}
+
+.contact-form button {
+font-size: 13px;
+padding: 10px 12px;
+}
+
+footer {
+font-size: 11px;
+padding: 12px;
+}
+}
+
+/* Extra Small Mobile (under 400px) */
+@media (max-width: 399px) {
+.profile-pic {
+width: 75px;
+height: 75px;
+}
+
+.profile-name {
+font-size: 14px;
+}
+
+.profile-role {
+font-size: 12px;
+}
+
+.profile-details p {
+font-size: 11px;
+}
+
+nav h2 {
+display: none;
+}
+
+nav a {
+font-size: 11px;
+padding: 5px 6px;
+display: inline-block;
+margin: 0;
+}
+
+#themeToggle {
+display: none;
+}
+
+.home {
+padding-top: 15px;
+}
+
+h1 {
+font-size: 18px;
+}
+
+h2 {
+font-size: 15px;
+}
+
+h3 {
+font-size: 13px;
+}
+
+section {
+padding: 15px 10px;
+}
+
+.buttons a {
+font-size: 12px;
+padding: 8px 10px;
+}
+
+.skills-row {
+grid-template-columns: 1fr;
+gap: 8px;
+}
+
+.tools-row {
+grid-template-columns: 1fr;
+gap: 8px;
+}
+
+.skill-card {
+padding: 10px;
+}
+
+.skill-card i {
+font-size: 20px;
+}
+
+.tools-card {
+padding: 10px;
+}
+
+.tools-card i {
+font-size: 20px;
+}
+
+.card img {
+height: 100px;
+}
+
+.contact-form {
+padding: 12px;
+}
+
+footer {
+font-size: 10px;
 }
 }
 </style>
@@ -1041,7 +1665,7 @@ margin: 5px 0;
 <div class="main">
 
 <nav>
-<h2>Portfolio</h2>
+<h2></h2>
 <div class="nav-links">
 <a href="#about">About</a>
 <a href="#resume">Resume</a>
@@ -1069,9 +1693,10 @@ learning modern technologies.
 
 <!-- ABOUT -->
 <section id="about">
-<h2>About Me</h2>
+<h2>Summary</h2>
 <p>
-Hi, I’m D Kiran Kumar Reddy, a Information Technology student passionate about Full-Stack Development.I build web applications using HTML&CSS,JavaScript,React, Node.js, and SQL and enjoy solving real-world problems with technology.
+Hi, I’m D Kiran Kumar Reddy, a Information Technology student with hands-on experience in Full Stack Development, Machine Learning, and Data Analysis. Skilled in building responsive web applications, developing machine learning models, and analyzing data to extract actionable insights. Proficient in Python, JavaScript, SQL, and modern web technologies. Developed real-world projects including certification management systems, e-commerce platforms, and fake news detection models. Seeking entry-level opportunities to build scalable applications and data-driven solutions
+
 </p>
 </section>
 <section id="Education">
@@ -1079,7 +1704,7 @@ Hi, I’m D Kiran Kumar Reddy, a Information Technology student passionate about
 <ul>
 <li>SSC – Ekashila School, Warangal (GPA 9.7)</li>
 <li>Intermediate – Narayana College, Hyderabad (80%)</li>
-<li>B.Tech IT – Vignan Institute of Technology and Science - Pursuing </li>
+<li>B.Tech IT – Vignan Institute of Technology and Science, Hyderabad - Pursuing </li>
 </ul>
 </section>
 <section id="Interests">
@@ -1103,7 +1728,7 @@ Hi, I’m D Kiran Kumar Reddy, a Information Technology student passionate about
 <!-- RESUME -->
 <section id="resume">
 <h2>Resume</h2>
-<p>Download or view my detailed resume to know about my qualifications .</p>
+<p>View my detailed resume to know about my qualifications .</p>
 
 <div class="buttons" style="margin: 30px 0; display: flex; justify-content: center;">
 <a href="#" onclick="openResume(); return false;" class="primary">View Resume</a>
@@ -1314,7 +1939,6 @@ Hi, I’m D Kiran Kumar Reddy, a Information Technology student passionate about
 
 <div class="contact-card">
 <h3><i class="fab fa-linkedin"></i>LinkedIn</h3>
-        <p><a href="https://www.linkedin.com/in/kiran-949o72/" target="_blank">Mr Kiran Reddy</a></p>
         <p><a href="https://www.linkedin.com/in/kiran-949o72/" target="_blank">Kiran Reddy</a></p>
 </div>
 </div>
